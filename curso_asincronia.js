@@ -49,17 +49,17 @@ cuadradoCallbacks(0,(value, result)=>{
 })*/
 
 
-/*const calculate = (n1, n2, operation) => operation(n1, n2);
+const calculate = (n1, n2, operation) => operation(n1, n2);
 
 const add = (n1, n2) => n1 + n2;
 
 const result = calculate(1,8, add);
-console.log(result)*/
-
-const calculate = (n1, n2, operation) => operation(n1, n2);
-const multiply = (n1, n2) => n1 * n2;
-const result = calculate(4,4, multiply);
 //console.log(result)
+
+const calculate2 = (n1, n2, operation) => operation(n1, n2);
+const multiply = (n1, n2) => n1 * n2;
+const result2 = calculate2(4,4, multiply);
+//console.log(result2)
 
 const calcular = (numero1, numero2) => operacion (numero1, numero2);
 const restar = (numero1, numero2) => numero1 - numero2;
@@ -154,7 +154,7 @@ document.getElementById('btnAdd').addEventListener('click', () =>{
 
 
 
-//promesas
+//promises
 function  cuadradoPromise(value){
     if(typeof value !== 'number') 
     return Promise.reject(`Error, the value ${value} entered is not a number`) 
@@ -164,7 +164,7 @@ function  cuadradoPromise(value){
                 value,
                 result: value * value
             })
-        },0 |Math.random() * 1000)
+        }, 0 | Math.random() * 1000)
     })
 }
 
@@ -184,7 +184,7 @@ function  cuadradoPromise(value){
 })
 .then(obj =>{
     console.log(`promise ${obj.value}, ${obj.result}`);
-    return cuadradoPromise('holi')
+    return cuadradoPromise(4)
 })
 .then(obj =>{
     console.log(`promise ${obj.value}, ${obj.result}`);
@@ -194,7 +194,12 @@ function  cuadradoPromise(value){
     console.log(`promise ${obj.value}, ${obj.result}`);
     console.log('end of the promise')
 })
-.catch(err => console.error(err)); */
+.catch(err => console.error(err));  */
+
+
+
+ 
+
 
 
 
@@ -218,7 +223,6 @@ const p = new Promise((resolve, reject) =>{
 });*/
 
 
-
 /* let y = 10;
 console.log('1. process started..');
 
@@ -226,7 +230,6 @@ setTimeout(() =>{
     y = y * 3 + 2;
     console.log('2. finished process..');
 }, 2000);
-
 
 console.log(`3. the result is: ${y}`) */
 
@@ -428,7 +431,7 @@ Promise.all([timeOut(100), timeOut(200)])
 
 
 
-const timeOut = (t) =>{
+/* const timeOut = (t) =>{
     return new Promise((resolve, reject) =>{
         setTimeout(() => {
             resolve(`Completed in ${t}`)
@@ -446,4 +449,181 @@ durations.map((duration) => {
 console.log(promises);
 
 Promise.all(promises)
+.then(response => console.log(response)) */
+
+
+
+
+
+
+
+
+//in case to reject
+/* const timeOut = (t) =>{
+    return new Promise((resolve, reject) =>{
+        setTimeout(() =>{
+            (t === 2000) ? reject(`Reject in ${t}`) : resolve(`Completed in ${t}`)
+        }, t)
+    })
+}
+
+
+const durations = [1000, 2000, 3000];
+const promises = [];
+durations.map((duration) =>{
+    promises.push(timeOut(duration));
+});
+
+Promise.all(promises)
 .then(response => console.log(response))
+.catch(error => console.log(`error in executing in ${error}`))
+ */
+
+
+
+
+
+
+
+
+ //uso de sets
+
+ let bolsa = new Set(['mandarina', 'guineo']);
+ bolsa.add('naranja')
+ .add('manzana')
+.add('uva')
+.add('manzana');
+
+//.delete('manzana') //elimina una y clear todo
+//console.log(bolsa.has('manzana')) //.has devuelve false o true
+
+/* for(let fruta of bolsa){
+    console.log(fruta)
+}
+
+console.log('\n')
+
+let arr = [...bolsa];
+let listado = arr.map((lista) =>{
+    console.log(lista)
+}) */
+
+
+
+//planets
+const planetsOrderFromSun = new Set();
+planetsOrderFromSun.add('Mercury')
+.add('Venus').add('Earth').add('Mars');
+//console.log(planetsOrderFromSun.has('Earth'));
+
+planetsOrderFromSun.delete('Mars');
+//console.log(planetsOrderFromSun.size)
+
+for(let planets of planetsOrderFromSun){
+    //console.log(planets)
+}
+
+planetsOrderFromSun.clear();
+//sconsole.log(planetsOrderFromSun.size === 0)
+
+
+
+
+
+
+
+
+
+
+
+//maps
+let mapa = new Map();
+mapa.set('nombre', 'anthony')
+.set('apellido', 'candelario')
+.set('ci', 0929919181);
+
+//console.log(mapa.has('ciudad')) //false
+//console.log(mapa.get('nombre')) //anthony
+
+//in object
+for(let datos of mapa){
+    //console.log(datos)
+}
+
+//in message
+for(let [key, value] of mapa){
+    //console.log(`mi ${key} es ${value}`)
+}
+
+
+
+
+
+
+//example 2
+const map = new Map();
+map.set('hobby', 'cycling');
+//console.log(map)
+
+const foods = {
+    dinner: 'curry', 
+    lunch: 'sandwich',
+    breakfast: 'eggs'
+}
+
+const normalFoods = {};
+
+map.set(normalFoods, foods);
+//console.log(map)
+
+for(const [key, value] of map){
+    //console.log(`${key} = ${value}`);
+}
+
+map.forEach((value, key) =>{
+    //console.log(`${key} = ${value}`);
+}, map)
+
+//map.clear();
+//console.log(map.size)
+
+
+
+
+
+//weakMaps
+const aboutAutor = new WeakMap();
+const currentAge = {};
+const currentCity = {};
+
+aboutAutor.set(currentAge, 30);
+aboutAutor.set(currentCity, 'Denver');
+
+//console.log(aboutAutor.has(currentCity)); //true
+aboutAutor.delete(currentAge);
+//console.log(aboutAutor.has(currentAge))
+
+
+
+
+
+
+
+
+//weaksets
+
+const ws = new WeakSet();
+let valor1 = {'valor 1': 1};
+let valor2 = {'valor 2': 2};
+let valor3 = {'valor 3': 3};
+
+ws.add(valor1)
+.add(valor2)
+.add(valor3)
+ws.delete(valor2);
+//console.log(ws)
+
+
+
+
+

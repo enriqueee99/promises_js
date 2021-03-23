@@ -530,12 +530,6 @@ planetsOrderFromSun.clear();
 
 
 
-
-
-
-
-
-
 //maps
 let mapa = new Map();
 mapa.set('nombre', 'anthony')
